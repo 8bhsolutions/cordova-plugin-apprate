@@ -134,7 +134,9 @@ AppRate = (function() {
       if(AppRate.preferences.simpleMode) {
         navigator.notification.confirm(localeObj.message, promptForStoreRatingWindowButtonClickHandler, localeObj.title, [localeObj.cancelButtonLabel, localeObj.laterButtonLabel, localeObj.rateButtonLabel]);
       } else {
-        navigator.notification.confirm(localeObj.appRatePromptMessage, promptForAppRatingWindowButtonClickHandler, localeObj.appRatePromptTitle, [localeObj.noButtonLabel, localeObj.yesButtonLabel]);
+        var noLabel = localeObj.appRateNegativeButtonLabel || localeObj.noButtonLabel;
+        var yesLabel = localeObj.appRatePositiveButtonLabel || localeObj.yesButtonLabel;
+        navigator.notification.confirm(localeObj.appRatePromptMessage, promptForAppRatingWindowButtonClickHandler, localeObj.appRatePromptTitle, [noLabel, yesLabel]);
       }
 
       var base = AppRate.preferences.callbacks;
